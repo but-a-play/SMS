@@ -20,10 +20,10 @@
     		    rownumbers="true" fitColumns="true" singleSelect="true">
     	    <thead>
     		    <tr>
-    			    <th field="firstname" width="50">First Name</th>
-    			    <th field="lastname" width="50">Last Name</th>
-    			    <th field="phone" width="50">Phone</th>
-    			    <th field="email" width="50">Email</th>
+    			    <th field="firstname" width="80">First Name</th>
+    			    <th field="lastname" width="80">Last Name</th>
+    			    <th field="phone" width="80">Phone</th>
+    			    <th field="email" width="80">Email</th>
     		    </tr>
     	    </thead>
         </table>
