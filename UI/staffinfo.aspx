@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="staffinfo.aspx.cs" Inherits="UI.staffinfo" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="StaffInfo.aspx.cs" Inherits="UI.StaffInfo" %>
 
 <!DOCTYPE html>
 
@@ -13,26 +13,19 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-        <table id="dg" title="My Users" class="easyui-datagrid" style="width:550px;height:250px"
-    		    url="get_users.php"
-    		    toolbar="#toolbar"
-    		    rownumbers="true" fitColumns="true" singleSelect="true">
-    	    <thead>
-    		    <tr>
-    			    <th field="firstname" width="80">First Name</th>
-    			    <th field="lastname" width="80">Last Name</th>
-    			    <th field="phone" width="80">Phone</th>
-    			    <th field="email" width="80">Email</th>
-    		    </tr>
-    	    </thead>
-        </table>
-        <div id="toolbar">
-    	    <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">New User</a>
-    	    <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUser()">Edit User</a>
-    	    <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">Remove User</a>
-        </div>
-    </div>
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="staff_No" DataSourceID="SqlDataSource1" Width="480px">
+            <Columns>
+                <asp:BoundField DataField="staff_No" HeaderText="工号" ReadOnly="True" SortExpression="staff_No" />
+                <asp:BoundField DataField="staff_Name" HeaderText="姓名" SortExpression="staff_Name" />
+                <asp:BoundField DataField="dept_Name" HeaderText="部门" SortExpression="dept_Name" />
+                <asp:BoundField DataField="job_Name" HeaderText="岗位" SortExpression="job_Name" />
+                <asp:BoundField DataField="staff_IsOnJob" HeaderText="是否在职" SortExpression="staff_IsOnJob" />
+            </Columns>
+        </asp:GridView>
+        <asp:Button ID="Button1" runat="server" Height="30px" OnClick="Button1_Click" Text="添加" Width="160px" />
+        <asp:Button ID="Button2" runat="server" Height="30px" Text="删除" Width="160px" />
+        <asp:Button ID="Button3" runat="server" Height="30px" Text="修改" Width="160px" />
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:SMSDBConnectionString %>" SelectCommand="SELECT Staff.staff_No, Staff.staff_Name, Staff.staff_IsOnJob, Dept.dept_Name, Job.job_Name FROM Staff INNER JOIN Dept ON Staff.dept_No = Dept.dept_No INNER JOIN Job ON Staff.job_No = Job.job_No"></asp:SqlDataSource>
     </form>
 </body>
 </html>

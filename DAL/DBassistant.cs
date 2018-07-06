@@ -12,6 +12,7 @@ namespace DAL
     {
         public DBAssistant()
         {
+            SqlConnection conn = SqlHelper.GetConnection();
 
         }
         
