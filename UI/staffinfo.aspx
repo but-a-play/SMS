@@ -13,7 +13,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="staff_No" DataSourceID="SqlDataSource1" Width="480px">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="staff_No" DataSourceID="SqlDataSource1" Width="480px" AllowPaging="True" AllowSorting="True">
             <Columns>
                 <asp:BoundField DataField="staff_No" HeaderText="工号" ReadOnly="True" SortExpression="staff_No" />
                 <asp:BoundField DataField="staff_Name" HeaderText="姓名" SortExpression="staff_Name" />

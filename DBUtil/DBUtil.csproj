@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8E4E6B61-35FF-4CFD-9A6F-B6AF28B580F4}</ProjectGuid>
+    <ProjectGuid>{CE991FEE-4650-45F5-A404-A814C7521C50}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BLL</RootNamespace>
-    <AssemblyName>BLL</AssemblyName>
+    <RootNamespace>DBUtil</RootNamespace>
+    <AssemblyName>DBUtil</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,18 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Test.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="DBAssistant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\IDAL\IDAL.csproj">
-      <Project>{fcfd20a8-610b-425d-a0e3-30a41d88d6f2}</Project>
-      <Name>IDAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Model\Model.csproj">
-      <Project>{b09c617b-a6b9-4637-8f57-d2f7defda51b}</Project>
-      <Name>Model</Name>
-    </ProjectReference>
+    <Compile Include="SqlHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

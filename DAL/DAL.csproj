@@ -46,9 +46,9 @@
     <Compile Include="SqlHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Model\MODEL.csproj">
+    <ProjectReference Include="..\Model\Model.csproj">
       <Project>{b09c617b-a6b9-4637-8f57-d2f7defda51b}</Project>
-      <Name>MODEL</Name>
+      <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

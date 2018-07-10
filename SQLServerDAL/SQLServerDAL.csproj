@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8E4E6B61-35FF-4CFD-9A6F-B6AF28B580F4}</ProjectGuid>
+    <ProjectGuid>{61FD4264-1B01-4810-9591-7473E747A95F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BLL</RootNamespace>
-    <AssemblyName>BLL</AssemblyName>
+    <RootNamespace>SQLServerDAL</RootNamespace>
+    <AssemblyName>SQLServerDAL</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,10 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Test.cs" />
+    <Compile Include="SQLDepartment.cs" />
+    <Compile Include="SQLJob.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SQLStaff.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DBUtil\DBUtil.csproj">
+      <Project>{ce991fee-4650-45f5-a404-a814c7521c50}</Project>
+      <Name>DBUtil</Name>
+    </ProjectReference>
     <ProjectReference Include="..\IDAL\IDAL.csproj">
       <Project>{fcfd20a8-610b-425d-a0e3-30a41d88d6f2}</Project>
       <Name>IDAL</Name>

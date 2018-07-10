@@ -6,30 +6,33 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Staff
+    /// <summary>
+    /// 职工类
+    /// </summary>
+    public class StaffInfo
     {
-        public Staff()
+        public StaffInfo()
         {
 
         }
-        private string staffNo;
+        private string no;
         /// <summary>
         /// 工号
         /// </summary>
-        public string StaffNo
+        public string No
         {
-            get { return staffNo; }
-            set { staffNo = value; }
+            get { return no; }
+            set { no = value; }
         }
 
-        private string staffName;
+        private string name;
         /// <summary>
         /// 员工姓名
         /// </summary>
-        public string StaffName
+        public string Name
         {
-            get { return staffName; }
-            set { staffName = value; }
+            get { return name; }
+            set { name = value; }
         }
 
         private string jobNo;
@@ -50,14 +53,14 @@ namespace Model
             get { return deptNo; }
             set { deptNo = value; }
         }
-        private string staffIsOnJob;
+        private bool isOnJob;
         /// <summary>
         /// 是否在职
         /// </summary>
-        public string StaffIsOnJob
+        public bool IsOnJob
         {
-            get { return staffIsOnJob; }
-            set { staffIsOnJob = value; }
+            get { return IsOnJob; }
+            set { IsOnJob = value; }
         }
 
 
