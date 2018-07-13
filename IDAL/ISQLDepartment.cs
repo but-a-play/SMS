@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
+using System.Data.SqlClient;
 
 namespace IDAL
 {
-    public interface ISQLDepartment
+    public interface ISQLDepartment: BaseISQL
     {
         /// <summary>
         /// 根据部门编号查询部门信息
@@ -36,5 +37,12 @@ namespace IDAL
         /// <param name="departmentInfo">修改的部门信息</param>
         /// <returns>是否修改成功</returns>
         bool ModifyDepartmentInfo(DepartmentInfo departmentInfo);
+
+        /// <summary>
+        /// 多记录查询
+        /// </summary>
+        /// <param name="paramsMap">查询条件</param>
+        /// <returns></returns>
+        SqlDataReader GetDepartmentInfo(Dictionary<string, object> paramsMap);
     }
 }

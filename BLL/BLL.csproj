@@ -40,10 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Department.cs" />
+    <Compile Include="Job.cs" />
+    <Compile Include="Staff.cs" />
     <Compile Include="Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DALFactory\DALFactory.csproj">
+      <Project>{a0f76dbf-a6fd-4374-bed8-3ad0ccda17ae}</Project>
+      <Name>DALFactory</Name>
+    </ProjectReference>
     <ProjectReference Include="..\IDAL\IDAL.csproj">
       <Project>{fcfd20a8-610b-425d-a0e3-30a41d88d6f2}</Project>
       <Name>IDAL</Name>

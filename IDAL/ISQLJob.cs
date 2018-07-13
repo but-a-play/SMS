@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
+using System.Data.SqlClient;
 
 namespace IDAL
 {
     /// <summary>
     /// JobInfo的数据库接口
     /// </summary>
-    public interface ISQLJob
+    public interface ISQLJob: BaseISQL
     {
         /// <summary>
         /// 根据岗位编号查找JobInfo的数据库接口
@@ -39,5 +40,12 @@ namespace IDAL
         /// <param name="jobInfo"></param>
         /// <returns>是否修改成功</returns>
         bool ModifyJobInfo(JobInfo jobInfo);
+
+        /// <summary>
+        /// 多记录查询
+        /// </summary>
+        /// <param name="paramsMap">查询条件</param>
+        /// <returns></returns>
+        SqlDataReader GetJobInfo(Dictionary<string, object> paramsMap);
     }
 }

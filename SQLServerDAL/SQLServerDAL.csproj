@@ -40,10 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SQLDepartment.cs" />
-    <Compile Include="SQLJob.cs" />
+    <Compile Include="Department.cs" />
+    <Compile Include="Job.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SQLStaff.cs" />
+    <Compile Include="Staff.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DBUtil\DBUtil.csproj">

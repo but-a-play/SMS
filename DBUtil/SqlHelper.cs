@@ -179,7 +179,7 @@ namespace DBUtil
         /// <returns></returns>
         public static string GetConnString()
         {
-            return ConfigurationManager.ConnectionStrings["ConStr"].ConnectionString;
+            return ConfigurationManager.ConnectionStrings["SMSDBConnectionString"].ToString();
         }
         /// <summary>
         /// 一个有效的数据库连接对象

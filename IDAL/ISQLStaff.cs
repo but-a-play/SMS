@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace IDAL
 {
-    public interface ISQLStaff
+    public interface ISQLStaff: BaseISQL
     {
         /// <summary>
         /// 根据工号查询职工信息
@@ -38,6 +38,7 @@ namespace IDAL
         /// <returns>是否修改成功</returns>
         bool ModifyStaffInfo(StaffInfo staffInfo);
 
-        List<StaffInfo> GetStaffInfo(Dictionary<string, object> paramsMap);
+        SqlDataReader GetStaffInfo(Dictionary<string, object> paramsMap);
+        
     }
 }

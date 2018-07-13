@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseISQL.cs" />
     <Compile Include="ISQLDepartment.cs" />
     <Compile Include="ISQLJob.cs" />
     <Compile Include="ISQLStaff.cs" />

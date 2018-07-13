@@ -11,7 +11,7 @@ using DBUtil;
 
 namespace SQLServerDAL
 {
-    public class SQLStaff : ISQLStaff
+    public class Staff : ISQLStaff
     {
         public bool AddStaffInfo(StaffInfo staffInfo)
         {
@@ -41,26 +41,30 @@ namespace SQLServerDAL
             return SqlHelper.ExecuteNonQuery(connStr, CommandType.Text, sqlText, sqlParas) == 1;
         }
 
-        public List<StaffInfo> GetStaffInfo(Dictionary<string, object> paramsMap)
+        public SqlDataReader GetStaffInfo(Dictionary<string, object> paramsMap)
         {
             string connStr = SqlHelper.GetConnString();
             string sqlText = "SELECT Staff.staff_No, Staff.staff_Name, Staff.staff_IsOnJob, Dept.dept_No, Dept.dept_Name, Job.job_No, Job.job_Name FROM Staff INNER JOIN Dept ON Staff.dept_No = Dept.dept_No INNER JOIN Job ON Staff.job_No = Job.job_No";
+            SqlParameter[] sqlParas = null;
             if (paramsMap.Count != 0)
             {
                 sqlText += " WHERE ";
                 int index = 0;
+                sqlParas = new SqlParameter[paramsMap.Count];
                 foreach (KeyValuePair<string, object> kvPair in paramsMap )
                 {
                     sqlText += (kvPair.Key + " = @" + kvPair.Key);
-                    index++;
-                    if(index != paramsMap.Count)
+                    
+                    if(index != paramsMap.Count - 1)
                     {
                         sqlText += " and ";
                     }
+                    sqlParas[index] = new SqlParameter("@" + kvPair.Key, kvPair.Value);
+                    index++;
                 }
             }
 
-            return SqlHelper.ExecuteScalar(connStr, CommandType.Text, sqlText, sqlParas) as StaffInfo;
+            return SqlHelper.ExecuteReader(connStr, CommandType.Text, sqlText, sqlParas);
         }
 
         public StaffInfo GetStaffInfo(string no)

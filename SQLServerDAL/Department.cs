@@ -11,7 +11,7 @@ using DBUtil;
 
 namespace SQLServerDAL
 {
-    public class SQLDepartment : ISQLDepartment
+    public class Department : ISQLDepartment
     {
         public bool AddDepartmentInfo(DepartmentInfo departmentInfo)
         {
@@ -61,6 +61,31 @@ namespace SQLServerDAL
             };
 
             return SqlHelper.ExecuteNonQuery(connStr, CommandType.Text, sqlText, sqlParas) == 1;
+        }
+
+        public SqlDataReader GetDepartmentInfo(Dictionary<string, object> paramsMap)
+        {
+            string connStr = SqlHelper.GetConnString();
+            string sqlText = "SELECT * FROM Department";
+            SqlParameter[] sqlParas = null;
+            if (paramsMap.Count != 0)
+            {
+                sqlText += " WHERE ";
+                int index = 0;
+                sqlParas = new SqlParameter[paramsMap.Count];
+                foreach (KeyValuePair<string, object> kvPair in paramsMap)
+                {
+                    sqlText += (kvPair.Key + " = @" + kvPair.Key);
+                    index++;
+                    if (index != paramsMap.Count)
+                    {
+                        sqlText += " and ";
+                    }
+                    sqlParas[index] = new SqlParameter("@" + kvPair.Key, kvPair.Value);
+                }
+            }
+
+            return SqlHelper.ExecuteReader(connStr, CommandType.Text, sqlText, sqlParas);
         }
     }
 }

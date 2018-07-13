@@ -11,7 +11,7 @@ using DBUtil;
 
 namespace SQLServerDAL
 {
-    public class SQLJob : ISQLJob
+    public class Job : ISQLJob
     {
         public bool AddJobInfo(JobInfo jobInfo)
         {
@@ -61,6 +61,32 @@ namespace SQLServerDAL
             };
 
             return SqlHelper.ExecuteNonQuery(connStr, CommandType.Text, sqlText, sqlParas) == 1;
+        }
+
+        public SqlDataReader GetJobInfo(Dictionary<string, object> paramsMap)
+        {
+            string connStr = SqlHelper.GetConnString();
+            string sqlText = "SELECT * FROM Job";
+            SqlParameter[] sqlParas = null;
+            if (paramsMap != null && paramsMap.Count != 0)
+            {
+                sqlText += " WHERE ";
+                int index = 0;
+                sqlParas = new SqlParameter[paramsMap.Count];
+                foreach (KeyValuePair<string, object> kvPair in paramsMap)
+                {
+                    sqlText += (kvPair.Key + " = @" + kvPair.Key);
+                    
+                    if (index != paramsMap.Count - 1)
+                    {
+                        sqlText += " and ";
+                    }
+                    sqlParas[index] = new SqlParameter("@" + kvPair.Key, kvPair.Value);
+                    index++;
+                }
+            }
+
+            return SqlHelper.ExecuteReader(connStr, CommandType.Text, sqlText, sqlParas);
         }
     }
 }
