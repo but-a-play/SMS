@@ -61,14 +61,23 @@
                             </Columns>
                             <EmptyDataTemplate>
                             </EmptyDataTemplate>
+                            
                         </asp:GridView>
-                        <asp:DetailsView ID="dv_Job" runat="server" AutoGenerateRows="False" DataKeyNames="job_No" DefaultMode="Insert" Height="50px" OnItemInserted="dv_Job_ItemInserted" Width="246px" OnItemInserting="dv_Job_ItemInserting">
+                        <asp:DetailsView ID="dv_Job" runat="server" AutoGenerateRows="False" DataKeyNames="job_No" DefaultMode="Insert" Height="50px" OnItemInserted="dv_Job_ItemInserted" Width="246px" OnItemInserting="dv_Job_ItemInserting" OnModeChanging="dv_Job_ModeChanging">
                             <Fields>
                                 <asp:BoundField DataField="job_No" HeaderText="岗位编号" ReadOnly="True" SortExpression="job_No" />
                                 <asp:BoundField DataField="job_Name" HeaderText="岗位名称" SortExpression="job_Name" />
                                 <asp:CommandField ButtonType="Button" ShowInsertButton="True" />
                             </Fields>
                         </asp:DetailsView>
+                        <asp:Label ID="Label3" runat="server" Text="岗位编号"></asp:Label>
+                        <asp:DropDownList ID="drop_JobNos" runat="server">
+                        </asp:DropDownList>
+                        <br />
+                        <asp:Label ID="Label4" runat="server" Text="岗位名称"></asp:Label>
+                        <asp:DropDownList ID="drop_JobNames" runat="server">
+                        </asp:DropDownList>
+                        <asp:Button ID="btn_QueryJob" runat="server" OnClick="btn_QueryJob_Click" Text="查询" />
                     </asp:View>
                     <asp:View ID="v_Staff" runat="server">
                         <asp:GridView ID="gv_Staff" runat="server" AutoGenerateColumns="False" DataKeyNames="staff_No,dept_No,job_No" Width="599px" AllowSorting="True">

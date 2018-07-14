@@ -47,5 +47,17 @@ namespace IDAL
         /// <param name="paramsMap">查询条件</param>
         /// <returns></returns>
         SqlDataReader GetJobInfo(Dictionary<string, object> paramsMap);
+
+        /// <summary>
+        /// 获取岗位编号集合
+        /// </summary>
+        /// <returns></returns>
+        Array GetJobNos();
+
+        /// <summary>
+        /// 获取岗位名称集合
+        /// </summary>
+        /// <returns></returns>
+        Array GetJobNames();
     }
 }

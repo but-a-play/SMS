@@ -12,7 +12,7 @@ namespace BLL
 {
     public class Job
     {
-        private ISQLJob sqlJob = DALFactor.CreateBaseISQL("JobInfo") as ISQLJob;
+        private ISQLJob sqlJob = DataAccess.CreateJob();
 
         /// <summary>
         /// 增加岗位信息
@@ -65,6 +65,16 @@ namespace BLL
         public SqlDataReader Query(Dictionary<string, object> paramsMap)
         {
             return sqlJob.GetJobInfo(paramsMap);
+        }
+
+        public Array QueryNos()
+        {
+            return sqlJob.GetJobNos();
+        }
+
+        public Array QueryNames()
+        {
+            return sqlJob.GetJobNames();
         }
     }
 }

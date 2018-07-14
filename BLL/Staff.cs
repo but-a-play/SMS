@@ -12,7 +12,7 @@ namespace BLL
 {
     public class Staff
     {
-        private ISQLStaff sqlStaff = DALFactor.CreateBaseISQL("StaffInfo") as ISQLStaff;
+        private ISQLStaff sqlStaff = DataAccess.CreateStaff();
 
         /// <summary>
         /// 增加人员信息

@@ -19,6 +19,12 @@ namespace UI
             {
                 gv_Job.DataSource = jobService.Query(null);
                 gv_Job.DataBind();
+
+                drop_JobNos.DataSource = jobService.QueryNos();
+                drop_JobNos.DataBind();
+
+                drop_JobNames.DataSource = jobService.QueryNames();
+                drop_JobNames.DataBind();
             }
 
         }
@@ -83,7 +89,9 @@ namespace UI
 
         protected void gv_Job_RowEditing(object sender, GridViewEditEventArgs e)
         {
-
+            gv_Job.EditIndex = e.NewEditIndex;
+            gv_Job.DataSource = jobService.Query(null);
+            gv_Job.DataBind();
         }
 
         protected void gv_Job_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
@@ -147,5 +155,31 @@ namespace UI
             }
 
         }
+
+        protected void dv_Job_ModeChanging(object sender, DetailsViewModeEventArgs e)
+        {
+
+        }
+
+        protected void btn_QueryJob_Click(object sender, EventArgs e)
+        {
+            string jobNo = drop_JobNos.Text.Trim();
+            string jobName = drop_JobNames.Text.Trim();
+            Dictionary<string, object> paramsMap = new Dictionary<string, object>();
+            if (jobNo.Length != 0)
+            {
+                paramsMap.Add("job_No", jobNo);
+            }
+            if (jobName.Length != 0)
+            {
+                paramsMap.Add("job_Name", jobName);
+            }
+
+            gv_Job.DataSource = jobService.Query(paramsMap);
+            gv_Job.DataBind();
+
+
+        }
+
     }
 }

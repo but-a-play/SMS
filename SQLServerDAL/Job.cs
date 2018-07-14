@@ -88,5 +88,19 @@ namespace SQLServerDAL
 
             return SqlHelper.ExecuteReader(connStr, CommandType.Text, sqlText, sqlParas);
         }
+
+        public Array GetJobNos()
+        {
+            string connStr = SqlHelper.GetConnString();
+            string sqlText = "SELECT DISTINCT Job_No FROM Job";
+            return SqlHelper.ExecuteReader(connStr, CommandType.Text, sqlText);
+        }
+
+        public Array GetJobNames()
+        {
+            string connStr = SqlHelper.GetConnString();
+            string sqlText = "SELECT DISTINCT Job_Name FROM Job";
+            return SqlHelper.ExecuteReader(connStr, CommandType.Text, sqlText);
+        }
     }
 }

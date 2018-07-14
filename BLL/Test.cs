@@ -13,7 +13,7 @@ namespace BLL
     public class Test
     {
 
-        private ISQLJob sqlJob = DALFactor.CreateBaseISQL("JobInfo") as ISQLJob;
+        private ISQLJob sqlJob = DataAccess.CreateJob();
         public bool Add(JobInfo jobInfo)
         {
             return sqlJob.AddJobInfo(jobInfo);

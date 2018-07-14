@@ -53,13 +53,15 @@ namespace SQLServerDAL
                 sqlParas = new SqlParameter[paramsMap.Count];
                 foreach (KeyValuePair<string, object> kvPair in paramsMap )
                 {
-                    sqlText += (kvPair.Key + " = @" + kvPair.Key);
+                    string[] keys = kvPair.Key.Split('.');
+                    string key = keys[keys.Length - 1];
+                    sqlText += (kvPair.Key + " = @" + key);
                     
                     if(index != paramsMap.Count - 1)
                     {
                         sqlText += " and ";
                     }
-                    sqlParas[index] = new SqlParameter("@" + kvPair.Key, kvPair.Value);
+                    sqlParas[index] = new SqlParameter("@" + key, kvPair.Value);
                     index++;
                 }
             }
