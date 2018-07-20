@@ -42,6 +42,8 @@
   <ItemGroup>
     <Compile Include="DepartmentInfo.cs" />
     <Compile Include="JobInfo.cs" />
+    <Compile Include="LogInfo.cs" />
+    <Compile Include="OperateInfo.cs" />
     <Compile Include="StaffInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

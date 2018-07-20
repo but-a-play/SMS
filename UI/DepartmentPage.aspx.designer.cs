@@ -10,78 +10,78 @@
 namespace UI {
     
     
-    public partial class Menu {
+    public partial class DepartmentPage {
         
         /// <summary>
-        /// form1 控件。
+        /// departmentInfo_form 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm departmentInfo_form;
         
         /// <summary>
-        /// Panel2 控件。
+        /// gvDepartment 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel2;
+        protected global::System.Web.UI.WebControls.GridView gvDepartment;
         
         /// <summary>
-        /// tv_Menu 控件。
+        /// dvDepartment 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TreeView tv_Menu;
+        protected global::System.Web.UI.WebControls.DetailsView dvDepartment;
         
         /// <summary>
-        /// Panel3 控件。
+        /// lblDeptNo 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel3;
+        protected global::System.Web.UI.WebControls.Label lblDeptNo;
         
         /// <summary>
-        /// mv 控件。
+        /// ddlDeptNos 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.MultiView mv;
+        protected global::System.Web.UI.WebControls.DropDownList ddlDeptNos;
         
         /// <summary>
-        /// v_Job 控件。
+        /// lblDeptName 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.View v_Job;
+        protected global::System.Web.UI.WebControls.Label lblDeptName;
         
         /// <summary>
-        /// v_Department 控件。
+        /// ddlDeptNames 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.View v_Department;
+        protected global::System.Web.UI.WebControls.DropDownList ddlDeptNames;
         
         /// <summary>
-        /// v_Staff 控件。
+        /// btnQueryDept 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.View v_Staff;
+        protected global::System.Web.UI.WebControls.Button btnQueryDept;
     }
 }

@@ -7,12 +7,14 @@ using IDAL;
 using DALFactory;
 using Model;
 using System.Data.SqlClient;
+using System.Collections;
+using System.Data;
 
 namespace BLL
 {
     public class Staff
     {
-        private ISQLStaff sqlStaff = DataAccess.CreateStaff();
+        private IStaff sqlStaff = DataAccess.CreateStaff();
 
         /// <summary>
         /// 增加人员信息
@@ -36,13 +38,15 @@ namespace BLL
 
         }
 
+      
+
         public bool Delete(string staffNo)
         {
-
+            
             return sqlStaff.DeleteStaffInfo(staffNo);
         }
 
-        public bool Modify(StaffInfo staffInfo)
+        public int Modify(StaffInfo staffInfo)
         {
             return sqlStaff.ModifyStaffInfo(staffInfo);
         }
@@ -50,6 +54,26 @@ namespace BLL
         public SqlDataReader Query(Dictionary<string, object> paramsMap)
         {
             return sqlStaff.GetStaffInfo(paramsMap);
+        }
+
+        public DataSet QueryDS(Dictionary<string, object> paramsMap)
+        {
+            return sqlStaff.GetStaffInfoDS(paramsMap);
+        }
+
+        public ArrayList QueryNames()
+        {
+            return sqlStaff.GetStaffNames();
+        }
+
+        public ArrayList QueryNos()
+        {
+            return sqlStaff.GetStaffNos();
+        }
+
+        public void ModifyDept(ArrayList staffList, string deptNo)
+        {
+            sqlStaff.ModifyDept(staffList, deptNo);
         }
     }
 }

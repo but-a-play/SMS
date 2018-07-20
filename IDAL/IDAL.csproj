@@ -40,10 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseISQL.cs" />
-    <Compile Include="ISQLDepartment.cs" />
-    <Compile Include="ISQLJob.cs" />
-    <Compile Include="ISQLStaff.cs" />
+    <Compile Include="IDepartment.cs" />
+    <Compile Include="IJob.cs" />
+    <Compile Include="ILog.cs" />
+    <Compile Include="IOperate.cs" />
+    <Compile Include="IStaff.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

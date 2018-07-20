@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 using IDAL;
 using DALFactory;
 using Model;
+using System.Collections;
 using System.Data.SqlClient;
 
 namespace BLL
 {
     public class Job
     {
-        private ISQLJob sqlJob = DataAccess.CreateJob();
+        private IJob sqlJob = DataAccess.CreateJob();
 
         /// <summary>
         /// 增加岗位信息
@@ -67,14 +68,24 @@ namespace BLL
             return sqlJob.GetJobInfo(paramsMap);
         }
 
-        public Array QueryNos()
+        public ArrayList QueryNos()
         {
             return sqlJob.GetJobNos();
         }
 
-        public Array QueryNames()
+        public ArrayList QueryNames()
         {
             return sqlJob.GetJobNames();
+        }
+
+        public string QueryNo(string name)
+        {
+            return sqlJob.GetJobNo(name);
+        }
+
+        public ArrayList GetJobList()
+        {
+            return sqlJob.GetJobList();
         }
     }
 }

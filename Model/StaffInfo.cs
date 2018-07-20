@@ -11,10 +11,6 @@ namespace Model
     /// </summary>
     public class StaffInfo
     {
-        public StaffInfo()
-        {
-
-        }
         private string no;
         /// <summary>
         /// 工号
@@ -59,8 +55,8 @@ namespace Model
         /// </summary>
         public bool IsOnJob
         {
-            get { return IsOnJob; }
-            set { IsOnJob = value; }
+            get { return isOnJob; }
+            set { isOnJob = value; }
         }
 
 

@@ -5,17 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Model;
 using System.Data.SqlClient;
+using System.Collections;
+using System.Data;
 
 namespace IDAL
 {
-    public interface ISQLDepartment: BaseISQL
+    public interface IDepartment
     {
         /// <summary>
         /// 根据部门编号查询部门信息
         /// </summary>
         /// <param name="no">部门编号</param>
         /// <returns>部门信息实例</returns>
-        DepartmentInfo GetDepartmentInfo(string no);
+        //DepartmentInfo GetDepartmentInfo(string no);
 
         /// <summary>
         /// 增加部门
@@ -44,5 +46,20 @@ namespace IDAL
         /// <param name="paramsMap">查询条件</param>
         /// <returns></returns>
         SqlDataReader GetDepartmentInfo(Dictionary<string, object> paramsMap);
+
+        /// <summary>
+        /// 获取部门编号集合
+        /// </summary>
+        /// <returns></returns>
+        ArrayList GetDepartmentNos();
+
+        /// <summary>
+        /// 获取部门名称集合
+        /// </summary>
+        /// <returns></returns>
+        ArrayList GetDepartmentNames();
+        string GetDeptNo(string deptName);
+        DataTable GetDepartmentByDT(Dictionary<string, object> paramsMap);
+        ArrayList GetDeptList();
     }
 }

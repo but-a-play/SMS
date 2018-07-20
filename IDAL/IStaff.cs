@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
+using System.Data;
 using System.Data.SqlClient;
+using System.Collections;
 
 namespace IDAL
 {
-    public interface ISQLStaff: BaseISQL
+    public interface IStaff
     {
         /// <summary>
         /// 根据工号查询职工信息
@@ -36,9 +38,17 @@ namespace IDAL
         /// </summary>
         /// <param name="staffInfo">修改的职工信息</param>
         /// <returns>是否修改成功</returns>
-        bool ModifyStaffInfo(StaffInfo staffInfo);
+        int ModifyStaffInfo(StaffInfo staffInfo);
 
         SqlDataReader GetStaffInfo(Dictionary<string, object> paramsMap);
-        
+
+        ArrayList GetStaffNames();
+
+        ArrayList GetStaffNos();
+
+        void ModifyDept(ArrayList staffList, string deptNo);
+
+        DataSet GetStaffInfoDS(Dictionary<string, object> paramsMap);
+
     }
 }

@@ -20,20 +20,26 @@ namespace DALFactory
         /// </summary>
         //private static readonly string db = "Sqlserver";
 
-        public static ISQLDepartment CreateDepartment()
+        public static IDepartment CreateDepartment()
         {
             string className = AssemblyName + ".Department";
-            return Assembly.Load(AssemblyName).CreateInstance(className) as ISQLDepartment;
+            return Assembly.Load(AssemblyName).CreateInstance(className) as IDepartment;
         }
-        public static ISQLJob CreateJob()
+        public static IJob CreateJob()
         {
             string className = AssemblyName + ".Job";
-            return Assembly.Load(AssemblyName).CreateInstance(className) as ISQLJob;
+            return Assembly.Load(AssemblyName).CreateInstance(className) as IJob;
         }
-        public static ISQLStaff CreateStaff()
+        public static IStaff CreateStaff()
         {
             string className = AssemblyName + ".Staff";
-            return Assembly.Load(AssemblyName).CreateInstance(className) as ISQLStaff;
+            return Assembly.Load(AssemblyName).CreateInstance(className) as IStaff;
+        }
+
+        public static ILog CreateLog()
+        {
+            string className = AssemblyName + ".Log";
+            return Assembly.Load(AssemblyName).CreateInstance(className) as ILog;
         }
     }
 }

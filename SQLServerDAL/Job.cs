@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data;
+using System.Collections;
 using System.Data.SqlClient;
 using Model;
 using IDAL;
 using DBUtil;
+using System.Data;
 
 namespace SQLServerDAL
 {
-    public class Job : ISQLJob
+    public class Job : IJob
     {
         public bool AddJobInfo(JobInfo jobInfo)
         {
@@ -38,17 +39,17 @@ namespace SQLServerDAL
             return SqlHelper.ExecuteNonQuery(connStr, CommandType.Text, sqlText, sqlParas) == 1;
         }
 
-        public JobInfo GetJobInfo(string no)
-        {
-            string connStr = SqlHelper.GetConnString();
-            string sqlText = "SELECT * FROM Job WHERE job_No = @job_No";
-            SqlParameter[] sqlParas = new SqlParameter[]
-            {
-                new SqlParameter("@job_No", no)
-            };
+        //public JobInfo GetJobInfo(string no)
+        //{
+        //    string connStr = SqlHelper.GetConnString();
+        //    string sqlText = "SELECT * FROM Job WHERE job_No = @job_No";
+        //    SqlParameter[] sqlParas = new SqlParameter[]
+        //    {
+        //        new SqlParameter("@job_No", no)
+        //    };
 
-            return SqlHelper.ExecuteScalar(connStr, CommandType.Text, sqlText, sqlParas) as JobInfo;
-        }
+        //    return SqlHelper.ExecuteScalar(connStr, CommandType.Text, sqlText, sqlParas) as JobInfo;
+        //}
 
         public bool ModifyJobInfo(JobInfo jobInfo)
         {
@@ -89,18 +90,65 @@ namespace SQLServerDAL
             return SqlHelper.ExecuteReader(connStr, CommandType.Text, sqlText, sqlParas);
         }
 
-        public Array GetJobNos()
+        public ArrayList GetJobNos()
         {
             string connStr = SqlHelper.GetConnString();
             string sqlText = "SELECT DISTINCT Job_No FROM Job";
-            return SqlHelper.ExecuteReader(connStr, CommandType.Text, sqlText);
+            DataSet ds = SqlHelper.ExecuteDataset(connStr, CommandType.Text, sqlText);
+            ArrayList alst = new ArrayList();
+
+            foreach(DataRow dr in ds.Tables[0].Rows){
+                alst.Add(dr[0].ToString());
+            }
+            return alst;
         }
 
-        public Array GetJobNames()
+        public ArrayList GetJobNames()
         {
             string connStr = SqlHelper.GetConnString();
             string sqlText = "SELECT DISTINCT Job_Name FROM Job";
-            return SqlHelper.ExecuteReader(connStr, CommandType.Text, sqlText);
+            DataSet ds = SqlHelper.ExecuteDataset(connStr, CommandType.Text, sqlText);
+            ArrayList alst = new ArrayList();
+
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                alst.Add(dr[0].ToString());
+            }
+            return alst;
+        }
+
+        public string GetJobNo(string name)
+        {
+            string connStr = SqlHelper.GetConnString();
+            SqlParameter[] sqlParas = sqlParas = new SqlParameter[1]; 
+            string sqlText = "SELECT Job_No FROM Job";
+            if (name != null && name.Length != 0)
+            {
+                sqlText += " WHERE Job_Name = @Job_Name";
+
+                sqlParas[0] = new SqlParameter("@Job_Name" , name);
+            }
+
+            return SqlHelper.ExecuteScalar(connStr, CommandType.Text, sqlText, sqlParas).ToString();
+        }
+
+        public ArrayList GetJobList()
+        {
+            SqlDataReader reader =  GetJobInfo(null);
+            ArrayList jobList = new ArrayList();
+            if (reader.HasRows)
+            {
+                
+                while (reader.Read())
+                {
+                    JobInfo job = new JobInfo();
+                    job.No = reader["job_No"].ToString().Trim();
+                    job.Name = reader["job_Name"].ToString().Trim();
+                    jobList.Add(job);
+                }
+            }
+
+            return jobList;
         }
     }
 }

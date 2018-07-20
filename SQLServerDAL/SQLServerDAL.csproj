@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,6 +46,8 @@
   <ItemGroup>
     <Compile Include="Department.cs" />
     <Compile Include="Job.cs" />
+    <Compile Include="Log.cs" />
+    <Compile Include="Operate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Staff.cs" />
   </ItemGroup>

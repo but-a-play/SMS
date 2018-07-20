@@ -5,20 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using Model;
 using System.Data.SqlClient;
+using System.Collections;
 
 namespace IDAL
 {
     /// <summary>
     /// JobInfo的数据库接口
     /// </summary>
-    public interface ISQLJob: BaseISQL
+    public interface IJob
     {
         /// <summary>
         /// 根据岗位编号查找JobInfo的数据库接口
         /// </summary>
         /// <param name="no">岗位编号</param>
         /// <returns>JobInfo</returns>
-        JobInfo GetJobInfo(string no);
+        //JobInfo GetJobInfo(string no);
 
         /// <summary>
         /// 添加JobInfo的接口
@@ -52,12 +53,15 @@ namespace IDAL
         /// 获取岗位编号集合
         /// </summary>
         /// <returns></returns>
-        Array GetJobNos();
+        ArrayList GetJobNos();
 
         /// <summary>
         /// 获取岗位名称集合
         /// </summary>
         /// <returns></returns>
-        Array GetJobNames();
+        ArrayList GetJobNames();
+        string GetJobNo(string name);
+
+        ArrayList GetJobList();
     }
 }
